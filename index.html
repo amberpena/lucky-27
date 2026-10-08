@@ -1,0 +1,963 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amber's Lucky 27 ♥</title>
+  <meta name="theme-color" content="#570510">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --wine: #570510;
+      --red: #a51b32;
+      --cream: #f7efe2;
+      --gold: #d9b47a;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--wine);
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button, a { font: inherit; }
+    button { cursor: pointer; }
+
+    /* FLOATING SPARKLES */
+    #sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 20;
+      overflow: hidden;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 12px 3px #fff1bc;
+      animation: twinkle 2.5s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: .1; transform: scale(.5); }
+      to { opacity: 1; transform: scale(2); }
+    }
+
+    /* ENVELOPE OPENING SCREEN */
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: radial-gradient(circle, #971b35, #39020b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: opacity 1s, visibility 1s;
+      padding: 20px;
+    }
+
+    #intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-content { width: 100%; }
+
+    .small-text {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #ead1ac;
+    }
+
+    .intro-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(40px, 8vw, 80px);
+      margin: 20px 0 0;
+    }
+
+    .script {
+      font-family: "Great Vibes", cursive;
+      color: var(--gold);
+      font-size: clamp(48px, 9vw, 85px);
+      font-weight: 400;
+    }
+
+    .envelope-wrap {
+      height: 310px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1000px;
+    }
+
+    .envelope {
+      width: min(78vw, 360px);
+      height: 220px;
+      position: relative;
+      filter: drop-shadow(0 20px 20px #21000688);
+      cursor: pointer;
+    }
+
+    .env-back {
+      position: absolute;
+      inset: 0;
+      background: #7e1026;
+      border: 2px solid var(--gold);
+    }
+
+    .letter {
+      position: absolute;
+      top: 12px;
+      left: 10%;
+      width: 80%;
+      height: 180px;
+      background: var(--cream);
+      color: var(--wine);
+      border: 3px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      transition: transform 1.2s .35s;
+    }
+
+    .letter strong {
+      font-family: "Playfair Display", serif;
+      font-size: 55px;
+    }
+
+    .letter span {
+      font-size: 9px;
+      letter-spacing: 3px;
+      margin-top: 12px;
+    }
+
+    .env-front {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      background: linear-gradient(145deg, #ba3048, #770d20);
+      clip-path: polygon(0 0, 50% 53%, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .env-flap {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      background: linear-gradient(145deg, #cb3c55, #8a1029);
+      clip-path: polygon(0 0, 100% 0, 50% 58%);
+      transform-origin: top;
+      transition: transform .9s;
+      backface-visibility: hidden;
+    }
+
+    .seal {
+      position: absolute;
+      top: 51%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #ffe1ad, #b47a3a);
+      border: 2px solid #ffe4b5;
+      color: #800e24;
+      display: grid;
+      place-items: center;
+      font-size: 36px;
+      transition: opacity .3s;
+    }
+
+    #intro.opening .env-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    #intro.opening .letter {
+      transform: translateY(-160px);
+    }
+
+    #intro.opening .seal { opacity: 0; }
+
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      border: 1px solid var(--gold);
+      background: var(--cream);
+      color: var(--wine);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 700;
+      transition: transform .25s, background .25s;
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+      background: white;
+    }
+
+    #website {
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    #website.visible { opacity: 1; }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: radial-gradient(circle at center, #a3223b, #5a0718 65%, #2d020a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 100px 20px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(#fff6c3 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: .14;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(68px, 12vw, 145px);
+      line-height: .9;
+      letter-spacing: -4px;
+      margin: 25px 0;
+      text-shadow: 0 12px 30px #23000988;
+    }
+
+    .hero h1 em {
+      font-family: "Great Vibes", cursive;
+      color: #e6bb84;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .hero-subtitle {
+      letter-spacing: 3px;
+      font-size: 12px;
+      line-height: 2;
+      text-transform: uppercase;
+    }
+
+    /* ACTUAL FLOATING ARTWORK */
+    .floating {
+      position: absolute;
+      z-index: 2;
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 12px 15px #20000877);
+      animation: float 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0) rotate(-9deg); }
+      to { transform: translateY(-28px) rotate(8deg); }
+    }
+
+    .art1 {
+      width: clamp(130px, 20vw, 270px);
+      top: 4%;
+      left: -5%;
+    }
+
+    .art2 {
+      width: clamp(120px, 19vw, 240px);
+      top: 5%;
+      right: -5%;
+      animation-delay: -2s;
+    }
+
+    .art3 {
+      width: clamp(110px, 17vw, 210px);
+      bottom: 4%;
+      left: -2%;
+      animation-delay: -4s;
+    }
+
+    .art4 {
+      width: clamp(115px, 18vw, 230px);
+      bottom: 4%;
+      right: -3%;
+      animation-delay: -1s;
+    }
+
+    .art5 {
+      width: clamp(75px, 11vw, 150px);
+      top: 45%;
+      left: 1%;
+      animation-delay: -3s;
+    }
+
+    .art6 {
+      width: clamp(80px, 12vw, 150px);
+      top: 45%;
+      right: 1%;
+      animation-delay: -5s;
+    }
+
+    /* INVITATION SECTION */
+    .cream-section {
+      background: var(--cream);
+      color: #3c1420;
+      padding: 90px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #9e2438;
+      font-size: 11px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 7vw, 75px);
+      margin: 18px 0;
+    }
+
+    .invite-image {
+      width: min(100%, 540px);
+      margin: 35px auto;
+      transform: rotate(-2deg);
+      border: 9px solid white;
+      box-shadow: 0 20px 50px #3c142044;
+      transition: transform .4s;
+    }
+
+    .invite-image:hover {
+      transform: rotate(0) scale(1.02);
+    }
+
+    .invite-image img {
+      display: block;
+      width: 100%;
+    }
+
+    .details {
+      max-width: 1100px;
+      margin: 55px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .detail-card {
+      border: 1px solid #c7a17a;
+      background: #fffaf2;
+      padding: 32px 20px;
+      transition: transform .3s;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .detail-card .number {
+      font-family: "Playfair Display", serif;
+      font-size: 50px;
+      color: #9f1a33;
+    }
+
+    .detail-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+    }
+
+    .detail-card p {
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 35px;
+    }
+
+    .action-buttons .button {
+      background: var(--wine);
+      color: white;
+    }
+
+    /* CASINO SLOT MACHINE */
+    .casino {
+      background: radial-gradient(circle, #531021, #19060d);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .casino h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(45px, 7vw, 80px);
+    }
+
+    .machine {
+      width: min(100%, 560px);
+      margin: 45px auto;
+      padding: 15px;
+      background: linear-gradient(135deg, #e6cb93, #a77735, #f5dca3, #906022);
+      border-radius: 25px;
+      box-shadow: 0 17px 0 #69451e, 0 25px 45px #0009;
+    }
+
+    .machine-inner {
+      background: #470b1b;
+      padding: 28px 16px;
+      border-radius: 14px;
+      border: 7px solid #60162a;
+    }
+
+    .machine-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #f1cf9c;
+      margin-bottom: 24px;
+    }
+
+    .reels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .reel {
+      height: 120px;
+      background: #fff8ec;
+      color: #a71c37;
+      display: grid;
+      place-items: center;
+      font-family: "Playfair Display", serif;
+      font-weight: 800;
+      font-size: clamp(65px, 10vw, 95px);
+      border: 4px solid #c69e6a;
+      border-radius: 8px;
+    }
+
+    .reel.spinning {
+      filter: blur(3px);
+    }
+
+    #spin {
+      margin-top: 28px;
+      background: #e7c38a;
+      border: none;
+      color: #4d0b1b;
+      padding: 16px 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    #spin:disabled { opacity: .6; }
+
+    #result {
+      font-family: "Great Vibes", cursive;
+      font-size: 42px;
+      color: #e9c28d;
+      margin-top: 25px;
+    }
+
+    /* COUNTDOWN */
+    footer {
+      background: #650b1e;
+      padding: 90px 20px;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(50px, 8vw, 95px);
+      margin: 25px 0 5px;
+      line-height: 1;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 45px 0;
+    }
+
+    .countdown div {
+      min-width: 65px;
+      border-top: 1px solid #d2a77c;
+      padding-top: 12px;
+    }
+
+    .countdown strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+    }
+
+    .countdown span {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* CONFETTI */
+    .confetti {
+      position: fixed;
+      top: -20px;
+      z-index: 150;
+      pointer-events: none;
+      animation: confettiFall 3.5s linear forwards;
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(110vh) rotate(900deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .details { grid-template-columns: 1fr; }
+
+      .hero { min-height: 780px; }
+
+      .hero h1 { font-size: clamp(65px, 16vw, 105px); }
+
+      .floating { opacity: .78; }
+
+      .art1 { left: -13%; }
+      .art2 { right: -13%; }
+      .art3 { left: -12%; }
+      .art4 { right: -12%; }
+      .art5 { left: -7%; }
+      .art6 { right: -7%; }
+
+      .reel { height: 95px; }
+
+      .cream-section, .casino {
+        padding: 75px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="sparkles"></div>
+
+  <!-- OPENING ENVELOPE -->
+  <div id="intro">
+    <div class="intro-content">
+      <div class="small-text">A private invitation awaits</div>
+
+      <h1 class="intro-title">You're on the list.</h1>
+      <div class="script">Lucky girl</div>
+
+      <div class="envelope-wrap">
+        <div class="envelope" id="envelope">
+          <div class="env-back"></div>
+          <div class="letter">
+            <strong>A ♥</strong>
+            <span>YOU ARE INVITED</span>
+          </div>
+          <div class="env-flap"></div>
+          <div class="env-front"></div>
+          <div class="seal">♥</div>
+        </div>
+      </div>
+
+      <button class="button" id="openBtn">
+        Break the seal / Open invitation
+      </button>
+
+      <p class="small-text" style="margin-top:25px">
+        An invitation worth opening
+      </p>
+    </div>
+  </div>
+
+  <main id="website">
+
+    <!-- MAIN REVEAL -->
+    <section class="hero">
+
+      <!-- UPLOADED ARTWORK -->
+      <img class="floating art1" src="assets/disco.webp" alt="">
+      <img class="floating art2" src="assets/stickers.webp" alt="">
+      <img class="floating art3" src="assets/dice.webp" alt="">
+      <img class="floating art4" src="assets/slot.webp" alt="">
+      <img class="floating art5" src="assets/ace.webp" alt="">
+      <img class="floating art6" src="assets/lucky.webp" alt="">
+
+      <div class="hero-content">
+        <p class="small-text">
+          The queen has entered her lucky era
+        </p>
+
+        <h1>
+          AMBER'S<br>
+          <em>Lucky</em> 27
+        </h1>
+
+        <p class="hero-subtitle">
+          An invitation to dress up, show up<br>
+          and make a little magic
+        </p>
+
+        <a class="button" href="#invitation">
+          Your invitation awaits
+        </a>
+      </div>
+    </section>
+
+    <!-- INVITATION -->
+    <section class="cream-section" id="invitation">
+
+      <p class="section-label">
+        The queen of hearts requests your presence
+      </p>
+
+      <h2 class="section-title">You're invited.</h2>
+
+      <p class="script" style="color:#a21b36">
+        It's my lucky year, darling.
+      </p>
+
+      <div class="invite-image">
+        <img src="assets/invitation.webp"
+             alt="Amber's Lucky 27 invitation">
+      </div>
+
+      <div class="details">
+
+        <div class="detail-card">
+          <div class="number">01</div>
+          <h3>Save the Date</h3>
+          <p>
+            Sunday, November 1, 2026<br>
+            <strong>5:30 PM</strong>
+          </p>
+        </div>
+
+        <div class="detail-card">
+          <div class="number">02</div>
+          <h3>Dress to Impress</h3>
+          <p>
+            Red · Black · Cream<br>
+            or Cheetah Print
+          </p>
+        </div>
+
+        <div class="detail-card">
+          <div class="number">03</div>
+          <h3>Find Your Way</h3>
+          <p>
+            Residence at the Heights<br>
+            611 W Calvalcade<br>
+            Houston, TX<br><br>
+            Parking inside gate or on street<br>
+            <strong>Street parking FREE Sundays</strong>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="action-buttons">
+        <a class="button" id="rsvp" href="#">
+          RSVP — Save Your Seat
+        </a>
+
+        <a class="button"
+           href="https://www.google.com/maps/search/?api=1&query=611+W+Calvalcade+Houston+TX"
+           target="_blank" rel="noopener">
+          Get Directions
+        </a>
+
+        <button class="button" id="calendar">
+          Add to Calendar
+        </button>
+      </div>
+
+    </section>
+
+    <!-- INTERACTIVE CASINO -->
+    <section class="casino">
+
+      <p class="section-label" style="color:#e4bf8d">
+        One more thing...
+      </p>
+
+      <h2>Feeling lucky?</h2>
+
+      <p>Try your luck. The house always celebrates.</p>
+
+      <div class="machine">
+        <div class="machine-inner">
+
+          <div class="machine-label">
+            AMBER'S PRIVATE CASINO / EST. 1999
+          </div>
+
+          <div class="reels">
+            <div class="reel">7</div>
+            <div class="reel">7</div>
+            <div class="reel">7</div>
+          </div>
+
+          <button id="spin">PULL FOR GOOD LUCK</button>
+
+        </div>
+      </div>
+
+      <div id="result">Lucky you.</div>
+
+    </section>
+
+    <!-- FINAL SECTION -->
+    <footer>
+      <p class="small-text">Mark your calendars</p>
+
+      <h2>27 looks good<br>on me.</h2>
+
+      <div class="script">See you there, darling.</div>
+
+      <div class="countdown">
+        <div><strong id="days">--</strong><span>Days</span></div>
+        <div><strong id="hours">--</strong><span>Hours</span></div>
+        <div><strong id="minutes">--</strong><span>Minutes</span></div>
+        <div><strong id="seconds">--</strong><span>Seconds</span></div>
+      </div>
+
+      <p class="small-text">AMBER'S LUCKY 27 · HOUSTON, TEXAS</p>
+    </footer>
+
+  </main>
+
+  <script>
+    "use strict";
+
+    // ADD YOUR RSVP LINK HERE
+    const RSVP_URL = "";
+
+    const intro = document.getElementById("intro");
+    const website = document.getElementById("website");
+
+    // OPEN ENVELOPE
+    function openInvitation() {
+      if (intro.classList.contains("opening")) return;
+
+      intro.classList.add("opening");
+
+      setTimeout(() => {
+        intro.classList.add("hidden");
+        website.classList.add("visible");
+        window.scrollTo(0, 0);
+        launchConfetti(90);
+      }, 1500);
+    }
+
+    document.getElementById("openBtn")
+      .addEventListener("click", openInvitation);
+
+    document.getElementById("envelope")
+      .addEventListener("click", openInvitation);
+
+    // DISCO SPARKLES
+    const sparkleContainer = document.getElementById("sparkles");
+
+    for (let i = 0; i < 65; i++) {
+      const sparkle = document.createElement("span");
+      sparkle.className = "sparkle";
+
+      sparkle.style.left = Math.random() * 100 + "%";
+      sparkle.style.top = Math.random() * 100 + "%";
+      sparkle.style.animationDelay = Math.random() * 4 + "s";
+
+      sparkleContainer.appendChild(sparkle);
+    }
+
+    // CONFETTI EFFECT
+    function launchConfetti(amount = 80) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const colors = [
+        "#a51b32",
+        "#e7c18d",
+        "#fff5e4",
+        "#d94b66"
+      ];
+
+      for (let i = 0; i < amount; i++) {
+        const piece = document.createElement("span");
+        piece.className = "confetti";
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.width = 5 + Math.random() * 8 + "px";
+        piece.style.height = 6 + Math.random() * 12 + "px";
+        piece.style.background =
+          colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.animationDuration =
+          2 + Math.random() * 3 + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 5500);
+      }
+    }
+
+    // INTERACTIVE SLOT MACHINE
+    const spinButton = document.getElementById("spin");
+    const reels = [...document.querySelectorAll(".reel")];
+    const result = document.getElementById("result");
+
+    spinButton.addEventListener("click", () => {
+      if (spinButton.disabled) return;
+
+      spinButton.disabled = true;
+      result.textContent = "The reels are turning...";
+
+      reels.forEach(reel => reel.classList.add("spinning"));
+
+      let spins = 0;
+
+      const spinTimer = setInterval(() => {
+        reels.forEach(reel => {
+          reel.textContent = Math.floor(Math.random() * 9) + 1;
+        });
+
+        spins++;
+
+        if (spins >= 22) {
+          clearInterval(spinTimer);
+
+          reels.forEach(reel => {
+            reel.classList.remove("spinning");
+            reel.textContent = "7";
+          });
+
+          result.textContent =
+            "JACKPOT — YOU MADE THE GUEST LIST!";
+
+          launchConfetti(140);
+          spinButton.disabled = false;
+        }
+      }, 90);
+    });
+
+    // COUNTDOWN TO NOVEMBER 1, 2026
+    const partyDate = new Date("2026-11-01T17:30:00-06:00");
+
+    function updateCountdown() {
+      const difference = Math.max(0, partyDate - new Date());
+
+      const days = Math.floor(difference / 86400000);
+      const hours = Math.floor(difference / 3600000) % 24;
+      const minutes = Math.floor(difference / 60000) % 60;
+      const seconds = Math.floor(difference / 1000) % 60;
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // RSVP
+    document.getElementById("rsvp")
+      .addEventListener("click", event => {
+        if (!RSVP_URL) {
+          event.preventDefault();
+          alert("RSVP link coming soon!");
+        } else {
+          event.preventDefault();
+          window.open(RSVP_URL, "_blank", "noopener");
+        }
+      });
+
+    // ADD TO CALENDAR
+    document.getElementById("calendar")
+      .addEventListener("click", () => {
+        const calendar = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "PRODID:-//Lucky 27//EN",
+          "BEGIN:VEVENT",
+          "UID:ambers-lucky-27-2026",
+          "DTSTAMP:20261008T000000Z",
+          "DTSTART:20261101T233000Z",
+          "DTEND:20261102T023000Z",
+          "SUMMARY:Amber's Lucky 27",
+          "LOCATION:Residence at the Heights Houston TX",
+          "DESCRIPTION:Dress code: Red Black Cream or Cheetah",
+          "END:VEVENT",
+          "END:VCALENDAR"
+        ].join("\r\n");
+
+        const blob = new Blob([calendar], {
+          type: "text/calendar;charset=utf-8"
+        });
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "ambers-lucky-27.ics";
+        link.click();
+
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+  </script>
+
+</body>
+</html>
