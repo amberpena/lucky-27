@@ -22,13 +22,9 @@
   --ink: #37101d;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -39,17 +35,9 @@ body {
   overflow-x: hidden;
 }
 
-button, a, input {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-}
+button, a, input { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
 
 button:focus-visible,
 a:focus-visible,
@@ -89,9 +77,7 @@ input:focus-visible {
   transition: transform .2s;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-}
+.btn:hover { transform: translateY(-3px); }
 
 .btn.dark {
   background: var(--wine);
@@ -232,20 +218,16 @@ input:focus-visible {
   transform: translateY(-145px);
 }
 
-.intro.opening .seal {
-  opacity: 0;
-}
+.intro.opening .seal { opacity: 0; }
 
-/* MAIN WEBSITE */
+/* MAIN SITE */
 
 .site {
   opacity: 0;
   transition: opacity .7s;
 }
 
-.site.visible {
-  opacity: 1;
-}
+.site.visible { opacity: 1; }
 
 /* HERO */
 
@@ -308,7 +290,7 @@ input:focus-visible {
   text-transform: uppercase;
 }
 
-/* FLOATING REAL IMAGE DECORATIONS */
+/* FLOATING IMAGE DECORATIONS */
 
 .floating {
   position: absolute;
@@ -370,9 +352,7 @@ input:focus-visible {
 }
 
 @keyframes float {
-  to {
-    translate: 9px -19px;
-  }
+  to { translate: 9px -19px; }
 }
 
 /* INVITATION */
@@ -398,9 +378,7 @@ input:focus-visible {
   margin: 15px 0 20px;
 }
 
-.cream .script {
-  color: var(--rose);
-}
+.cream .script { color: var(--rose); }
 
 .invite-frame {
   width: min(100%, 560px);
@@ -587,7 +565,7 @@ input:focus-visible {
   font-size: 13px;
 }
 
-/* SLOT MACHINE */
+/* CASINO */
 
 .casino {
   position: relative;
@@ -643,9 +621,7 @@ input:focus-visible {
   border-radius: 6px;
 }
 
-.reel.spinning {
-  filter: blur(2px);
-}
+.reel.spinning { filter: blur(2px); }
 
 #spin {
   border: 0;
@@ -658,9 +634,7 @@ input:focus-visible {
   letter-spacing: .12em;
 }
 
-#spin:disabled {
-  opacity: .6;
-}
+#spin:disabled { opacity: .6; }
 
 #result {
   min-height: 38px;
@@ -702,64 +676,29 @@ input:focus-visible {
   text-transform: uppercase;
 }
 
-/* FLOATING MUSIC BUTTON */
+/* COMMON NINJA MUSIC PLAYER */
 
-.music-control {
+.birthday-player {
   position: fixed;
-  z-index: 90;
-  bottom: 22px;
+  bottom: 20px;
   right: 20px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 1px solid #e1bf83;
-  background: #340714;
-  color: #fff4e2;
-  box-shadow: 0 8px 30px #0005;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .05em;
+  z-index: 90;
+  width: min(340px, calc(100vw - 32px));
+  max-height: 45vh;
+  overflow: auto;
+  display: none;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px #14000855;
 }
 
-.music-control[aria-pressed="true"] {
-  background: #821b38;
-}
-
-.music-icon {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* CONFETTI */
-
-.confetti {
-  position: fixed;
-  z-index: 120;
-  top: -20px;
-  pointer-events: none;
-  animation: fall 3.5s linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(800deg);
-    opacity: 0;
-  }
+.birthday-player.visible {
+  display: block;
 }
 
 /* MOBILE */
 
 @media (max-width: 650px) {
-  .hero {
-    min-height: 760px;
-  }
+  .hero { min-height: 760px; }
 
   .hero h2 {
     font-size: clamp(65px, 15vw, 95px);
@@ -772,16 +711,12 @@ input:focus-visible {
 
   .float-cherry,
   .float-dice,
-  .float-ball {
-    left: -7%;
-  }
+  .float-ball { left: -7%; }
 
   .float-disco,
   .float-kiss,
   .float-cards,
-  .float-chips {
-    right: -7%;
-  }
+  .float-chips { right: -7%; }
 
   .detail-grid {
     grid-template-columns: 1fr;
@@ -791,9 +726,7 @@ input:focus-visible {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .swatch {
-    min-height: 130px;
-  }
+  .swatch { min-height: 130px; }
 
   .section,
   .dress,
@@ -802,13 +735,12 @@ input:focus-visible {
     padding: 70px 16px;
   }
 
-  .reel {
-    height: 90px;
-  }
+  .reel { height: 90px; }
 
-  .music-control {
-    bottom: 14px;
+  .birthday-player {
+    bottom: 12px;
     right: 12px;
+    width: min(300px, calc(100vw - 24px));
   }
 }
 
@@ -864,11 +796,11 @@ input:focus-visible {
 
 <main class="site" id="site">
 
-<!-- HERO WITH YOUR ACTUAL PHOTOS -->
+<!-- HERO -->
 
 <section class="hero" aria-labelledby="hero-title">
 
-  <!-- Inside assets folder -->
+  <!-- ASSETS FOLDER -->
 
   <img
     class="floating float-cherry"
@@ -898,7 +830,7 @@ input:focus-visible {
     data-image="kiss"
   >
 
-  <!-- Current GitHub filename is "7 ball" -->
+  <!-- YOUR 7 BALL HAS NO FILE EXTENSION -->
 
   <img
     class="floating float-ball"
@@ -907,7 +839,7 @@ input:focus-visible {
     data-image="7 ball"
   >
 
-  <!-- These two are in the MAIN folder -->
+  <!-- THESE ARE IN THE MAIN FOLDER -->
 
   <img
     class="floating float-cards"
@@ -947,7 +879,7 @@ input:focus-visible {
   </div>
 </section>
 
-<!-- YOUR INVITATION -->
+<!-- INVITATION -->
 
 <section class="section cream" id="invitation">
   <div class="wrap">
@@ -965,7 +897,7 @@ input:focus-visible {
     <div class="invite-frame">
       <img
         src="assets/invitation.png"
-        alt="Amber's Lucky 27 Queen of Hearts birthday invitation"
+        alt="Amber's Lucky 27 birthday invitation"
         loading="lazy"
       >
     </div>
@@ -980,9 +912,7 @@ input:focus-visible {
         <div class="eyebrow">The date</div>
         <div class="date-big">NOV 01</div>
         <h3>Sunday · 2026</h3>
-        <p>
-          Starting at <strong>5:30 PM</strong>
-        </p>
+        <p>Starting at <strong>5:30 PM</strong></p>
       </article>
 
       <article class="detail">
@@ -996,8 +926,8 @@ input:focus-visible {
         </p>
 
         <p>
-          Please follow posted parking
-          signs and building rules.
+          Please follow posted parking signs
+          and building rules.
         </p>
       </article>
 
@@ -1116,15 +1046,15 @@ input:focus-visible {
       ></p>
 
       <small>
-        Your RSVP is only submitted
-        after completing the linked form.
+        Your RSVP is submitted after
+        completing the linked form.
       </small>
 
     </div>
   </div>
 </section>
 
-<!-- INTERACTIVE CASINO -->
+<!-- SLOT MACHINE -->
 
 <section class="casino">
   <div class="wrap">
@@ -1219,84 +1149,39 @@ input:focus-visible {
 
 </main>
 
-<!-- FLOATING MUSIC BUTTON -->
+<!-- COMMON NINJA MUSIC PLAYER -->
+<!-- APPEARS ONLY AFTER OPENING THE ENVELOPE -->
 
-<button
-  id="musicBtn"
-  class="music-control"
-  type="button"
-  aria-pressed="false"
-  aria-label="Turn music on"
+<div
+  id="birthdayPlayer"
+  class="birthday-player"
+  aria-label="Birthday music player"
 >
+  <div class="commonninja_component pid-0f27ba7e-ea64-4b23-9538-611ab73af0c4"></div>
+</div>
 
-  <svg
-    class="music-icon"
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
-    <path d="M9 18V5l12-2v13M9 18c0 1.7-1.6 3-3.5 3S2 19.7 2 18s1.6-3 3.5-3S9 16.3 9 18Zm12-2c0 1.7-1.6 3-3.5 3S14 17.7 14 16s1.6-3 3.5-3S21 14.3 21 16Z"/>
-  </svg>
-
-  <span id="musicLabel">Music Off</span>
-
-</button>
-
-<!-- YOUR UPLOADED SONG -->
-
-<audio
-  id="partyMusic"
-  src="assets/party-song.mp3"
-  preload="none"
-  loop
-></audio>
+<script
+  src="https://cdn.commoninja.com/sdk/latest/commonninja.js"
+  defer
+></script>
 
 <script>
 'use strict';
 
 /*
-  ADD YOUR GOOGLE FORM LINK HERE
-  WHEN YOU'RE READY TO ACCEPT RSVPS.
+  GOOGLE FORM RSVP LINK
+
+  Replace the empty quotes below with
+  your published Google Forms link.
 */
 
 const RSVP_FORM_URL = '';
 
-const audio = document.getElementById('partyMusic');
-const musicBtn = document.getElementById('musicBtn');
-const musicLabel = document.getElementById('musicLabel');
 const intro = document.getElementById('intro');
 const site = document.getElementById('site');
-
-/* MUSIC */
-
-function updateMusic() {
-  const playing = !audio.paused;
-
-  musicLabel.textContent = playing
-    ? 'Music On'
-    : 'Music Off';
-
-  musicBtn.setAttribute(
-    'aria-pressed',
-    String(playing)
-  );
-
-  musicBtn.setAttribute(
-    'aria-label',
-    playing ? 'Turn music off' : 'Turn music on'
-  );
-}
-
-function startMusic() {
-  audio.volume = 0.45;
-
-  const attempt = audio.play();
-
-  if (attempt) {
-    attempt
-      .then(updateMusic)
-      .catch(updateMusic);
-  }
-}
+const birthdayPlayer = document.getElementById(
+  'birthdayPlayer'
+);
 
 /* CONFETTI */
 
@@ -1337,20 +1222,22 @@ function confetti(amount) {
   }
 }
 
-/* OPEN THE ENVELOPE */
+/* OPEN ENVELOPE */
 
 function openInvitation() {
   if (intro.classList.contains('opening')) {
     return;
   }
 
-  startMusic();
-
   intro.classList.add('opening');
 
   setTimeout(() => {
     intro.classList.add('hidden');
     site.classList.add('visible');
+
+    /* REVEAL MUSIC PLAYER */
+
+    birthdayPlayer.classList.add('visible');
 
     window.scrollTo(0, 0);
 
@@ -1373,25 +1260,6 @@ envelope.addEventListener('keydown', event => {
   }
 });
 
-/* FLOATING MUSIC CONTROL */
-
-musicBtn.addEventListener('click', () => {
-  if (audio.paused) {
-    startMusic();
-  } else {
-    audio.pause();
-    updateMusic();
-  }
-});
-
-audio.addEventListener('play', updateMusic);
-audio.addEventListener('pause', updateMusic);
-
-audio.addEventListener('error', () => {
-  updateMusic();
-  musicLabel.textContent = 'Music unavailable';
-});
-
 /* HIDE MISSING IMAGE FILES */
 
 document
@@ -1405,6 +1273,10 @@ document
         img.getAttribute('src')
       );
     });
+
+    if (img.complete && img.naturalWidth === 0) {
+      img.style.display = 'none';
+    }
   });
 
 /* RSVP */
@@ -1499,7 +1371,7 @@ document
     }, 90);
   });
 
-/* COUNTDOWN TO THE PARTY */
+/* COUNTDOWN */
 
 const partyDate = new Date(
   '2026-11-01T17:30:00-06:00'
@@ -1525,7 +1397,6 @@ function countdown() {
 }
 
 countdown();
-
 setInterval(countdown, 1000);
 
 </script>
