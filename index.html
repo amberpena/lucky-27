@@ -7,303 +7,1085 @@
 <meta name="theme-color" content="#5d091b">
 <title>Amber's Lucky 27 | You're Invited</title>
 <meta name="description" content="You're invited to Amber's Lucky 27 — November 1, 2026.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&family=Italianno&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Italianno&display=swap" rel="stylesheet">
+
 <style>
-:root{--wine:#5d091b;--dark:#26050f;--red:#a92039;--cream:#f8efde;--gold:#d5b27b;--ink:#35131d}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--wine);color:var(--cream);font:16px/1.65 'DM Sans',sans-serif;overflow-x:hidden}
-button,a,input{font:inherit}
-button{cursor:pointer}
-a{color:inherit}
-.serif{font-family:'Playfair Display',serif}
-.script{font-family:'Italianno',cursive;font-size:clamp(60px,9vw,108px);font-weight:400;line-height:.9;color:var(--gold)}
-.eyebrow{text-transform:uppercase;letter-spacing:.24em;font-size:11px;font-weight:700}
-.button{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:12px 22px;border:1px solid var(--gold);background:var(--cream);color:var(--wine);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:transform .2s,background .2s}
-.button:hover{transform:translateY(-3px);background:#fff}
-.button.outline{background:transparent;color:var(--cream)}
-.button.dark{background:var(--wine);color:var(--cream)}
-.button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;background:radial-gradient(ellipse at 50% 30%,#a9233f,#420412 70%);transition:opacity .9s,visibility .9s;padding:16px}
-.intro.hide{opacity:0;visibility:hidden;pointer-events:none}
-.intro h1{font:600 clamp(44px,8vw,78px)/1.1 'Playfair Display',serif;margin:18px 0 0}
-.envelope-stage{height:305px;display:grid;place-items:center;perspective:1000px}
-.envelope{position:relative;width:min(78vw,365px);height:225px;filter:drop-shadow(0 24px 20px #1c000888);cursor:pointer}
-.env-back{position:absolute;inset:0;background:#85172d;border:2px solid #d9b886}
-.env-letter{position:absolute;left:9%;top:7%;width:82%;height:86%;z-index:2;background:#f5ead8;border:4px double #b78e61;color:#671126;display:grid;place-items:center;transition:transform 1.1s .35s}
-.env-letter span{font:700 50px 'Playfair Display',serif}
-.env-front{position:absolute;inset:0;z-index:4;background:linear-gradient(130deg,#b9324d,#7e1028);clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%)}
-.env-flap{position:absolute;inset:0;z-index:5;background:linear-gradient(130deg,#c83b57,#8b1830);clip-path:polygon(0 0,100% 0,50% 59%);transform-origin:top;backface-visibility:hidden;transition:transform .8s}
-.seal{position:absolute;z-index:6;left:50%;top:53%;transform:translate(-50%,-50%);border-radius:50%;height:69px;width:69px;background:radial-gradient(circle at 30% 20%,#f5d9a4,#ae6d3e);border:3px double #ffe2a6;display:grid;place-items:center;color:#7e122b;font:700 32px 'Playfair Display',serif;transition:opacity .25s}
-.intro.opening .env-flap{transform:rotateX(180deg);z-index:1}
-.intro.opening .env-letter{transform:translateY(-160px)}
-.intro.opening .seal{opacity:0}
-.intro .button{margin-top:4px}
-.intro-note{font-size:11px;letter-spacing:.15em;margin-top:17px;color:#efd4b4}
-.site{opacity:0;transition:opacity .8s}
-.site.visible{opacity:1}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px clamp(18px,4vw,70px);background:#380611;border-bottom:1px solid #e2c18c55}
-.topbar .brand{font:700 18px 'Playfair Display',serif}
-.topbar button{background:transparent;border:1px solid #d9b27b;color:var(--cream);padding:8px 12px;font-size:12px}
-.hero{position:relative;min-height:92vh;display:grid;place-items:center;text-align:center;overflow:hidden;isolation:isolate;padding:100px 25px;background:radial-gradient(ellipse at center,#9d2039,#540817 72%,#29030b)}
-.hero:before,.casino:before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.14;background-image:radial-gradient(#f8dfb7 1px,transparent 1px);background-size:21px 21px}
-.hero-content{position:relative;z-index:3;max-width:750px}
-.hero h2{font:700 clamp(66px,12vw,145px)/.86 'Playfair Display',serif;letter-spacing:-.065em;margin:25px 0 15px;text-shadow:0 14px 35px #25000799}
-.hero .script{display:block;transform:rotate(-7deg);margin:8px 0 25px}
-.hero-sub{font-size:13px;letter-spacing:.15em;text-transform:uppercase;max-width:400px;margin:0 auto 30px}
-.floating{position:absolute;z-index:2;pointer-events:none;object-fit:contain;filter:drop-shadow(0 14px 17px #21000a99);animation:drift var(--duration,8s) ease-in-out infinite alternate}
-.floating.framed{border:7px solid #f5e6d0;box-shadow:0 14px 35px #0006}
-.f1{width:clamp(105px,17vw,235px);left:-3%;top:4%;transform:rotate(-15deg)}
-.f2{width:clamp(105px,16vw,220px);right:-2%;top:7%;transform:rotate(11deg);--duration:10s}
-.f3{width:clamp(100px,16vw,210px);left:-2%;bottom:3%;transform:rotate(9deg);--duration:7s}
-.f4{width:clamp(110px,16vw,210px);right:-2%;bottom:3%;transform:rotate(-12deg);--duration:9s}
-.f5{width:clamp(90px,12vw,150px);left:4%;top:43%;--duration:11s}
-.f6{width:clamp(90px,12vw,150px);right:4%;top:43%;--duration:8s}
-@keyframes drift{to{translate:12px -24px;rotate:7deg}}
-.cream{background:var(--cream);color:var(--ink)}
-.section{padding:95px 20px;text-align:center;position:relative}
-.wrap{max-width:1120px;margin:auto}
-.section-title{font:700 clamp(40px,6vw,75px)/1.1 'Playfair Display',serif;margin:15px 0 20px}
-.section .script{color:#9d2039}
-.invitation-shell{position:relative;width:min(100%,520px);margin:45px auto 25px;padding:15px;background:#fffaf1;box-shadow:0 20px 60px #38111b44;transform:rotate(-1deg)}
-.invitation-shell:before{content:'';position:absolute;inset:7px;border:1px solid #c29d72;pointer-events:none}
-.invitation-shell img{width:100%;display:block}
-.invitation-shell .privacy-label{position:absolute;left:40%;top:57%;width:36%;height:12%;background:#f2e9d9;color:#571324;display:grid;place-items:center;font-size:clamp(8px,1.6vw,12px);font-weight:700;line-height:1.25;padding:4px}
-.stamp{display:inline-block;padding:7px 18px;border:1px solid #9b6d54;transform:rotate(-3deg);font:700 11px 'DM Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase}
-.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:45px auto;max-width:880px}
-.detail{border:1px solid #cbb49b;background:#fffbf3;padding:28px 20px}
-.detail h3{font:700 27px 'Playfair Display',serif;margin:8px 0}
-.detail p{margin:10px 0;font-size:14px;line-height:1.8}
-.date-big{font:700 45px 'Playfair Display',serif;color:#a0203a}
-.dress{background:linear-gradient(145deg,#620d21,#390510);color:#fff3e4;padding:90px 20px;position:relative;overflow:hidden;text-align:center}
-.dress .section-title{color:#fff3e4}
-.dress-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:850px;margin:35px auto}
-.swatch{min-height:160px;display:flex;align-items:end;justify-content:center;padding:15px;font:700 17px 'Playfair Display',serif;box-shadow:0 15px 25px #0004;border:5px solid #fff7e9;transform:rotate(var(--r,0deg))}
-.swatch.red{background:#ad1835;--r:-4deg}
-.swatch.black{background:#151013;--r:3deg}
-.swatch.cream-swatch{background:#f5e9d7;color:#451422;--r:-2deg}
-.swatch.cheetah{color:#24130f;--r:4deg;background-color:#d8ad6c;background-image:radial-gradient(ellipse 14px 10px at 16px 19px,#4a2519 40%,transparent 43%),radial-gradient(ellipse 12px 17px at 48px 52px,#3b241c 37%,transparent 40%),radial-gradient(ellipse 13px 9px at 67px 18px,#57321e 40%,transparent 43%);background-size:80px 75px}
-.maps{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:23px}
-.rsvp{background:#f4e7d5;color:var(--ink);text-align:center;padding:95px 20px}
-.rsvp-panel{max-width:650px;margin:25px auto;background:#fffaf2;border:1px solid #c7a778;padding:35px 25px;box-shadow:0 15px 30px #5c12201a}
-.choices{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:25px auto}
-.choice{display:flex;align-items:center;gap:10px;border:1px solid #b99579;padding:16px 18px;background:white;cursor:pointer;font-size:14px;font-weight:700}
-.choice:has(input:checked){background:#5d091b;color:white;border-color:#5d091b}
-.choice input{accent-color:#9d1c34;width:18px;height:18px}
-.rsvp-status{min-height:24px;font-size:13px;margin:14px 0}
-.casino{position:relative;background:radial-gradient(ellipse,#64152a,#23040e);text-align:center;padding:100px 20px}
-.casino .section-title{color:#fff1dc}
-.machine{max-width:510px;margin:40px auto;padding:14px;border-radius:25px;background:linear-gradient(135deg,#f2d59a,#a36c30,#f5dba0,#8c5728);box-shadow:0 15px 0 #62401e,0 30px 40px #0007}
-.machine-inner{border:7px solid #67223a;border-radius:13px;background:#480d20;padding:25px 18px}
-.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
-.reel{height:115px;display:grid;place-items:center;background:#fff8e9;color:#a91b38;font:800 clamp(65px,11vw,95px) 'Playfair Display',serif;border:4px solid #c99f64;border-radius:6px}
-.reel.spinning{filter:blur(2px)}
-#spin{border:0;background:#e9c992;color:#3b0c19;padding:15px 28px;text-transform:uppercase;font-weight:800;letter-spacing:.12em;font-size:12px}
-#spin:disabled{opacity:.6}
-#result{font:600 24px 'Playfair Display',serif;color:#f0d1a0;min-height:36px}
-.footer{text-align:center;padding:85px 20px;background:#5d091b}
-.footer h2{font:700 clamp(48px,8vw,85px)/1 'Playfair Display',serif}
-.count{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:30px 0}
-.count strong{display:block;font:700 30px 'Playfair Display',serif}
-.count span{font-size:10px;letter-spacing:.16em;text-transform:uppercase}
-.confetti{position:fixed;z-index:120;top:-20px;pointer-events:none;animation:fall 3.5s linear forwards}
-@keyframes fall{to{transform:translateY(110vh) rotate(800deg);opacity:0}}
-@media(max-width:650px){.hero{min-height:770px}.floating{opacity:.72}.f1{left:-12%}.f2{right:-12%}.f3{left:-12%}.f4{right:-12%}.f5{left:-10%}.f6{right:-10%}.detail-grid{grid-template-columns:1fr}.dress-grid{grid-template-columns:repeat(2,1fr)}.swatch{min-height:130px}.section,.dress,.rsvp,.casino{padding:70px 16px}.topbar .eyebrow{display:none}.reel{height:93px}.hero h2{font-size:clamp(60px,15vw,95px)}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+:root {
+  --wine:#5d091b;
+  --dark:#26050f;
+  --red:#a92039;
+  --cream:#f8efde;
+  --gold:#d5b27b;
+  --ink:#35131d;
+}
+
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  background:var(--wine);
+  color:var(--cream);
+  font:16px/1.65 "DM Sans",sans-serif;
+  overflow-x:hidden;
+}
+
+button,a,input { font:inherit; }
+button { cursor:pointer; }
+a { color:inherit; }
+
+.serif {
+  font-family:"DM Serif Display",Georgia,serif;
+}
+
+.script {
+  font-family:"Italianno",cursive;
+  font-size:clamp(65px,9vw,112px);
+  font-weight:400;
+  line-height:.9;
+  color:var(--gold);
+}
+
+.eyebrow {
+  text-transform:uppercase;
+  letter-spacing:.24em;
+  font-size:11px;
+  font-weight:700;
+}
+
+.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:49px;
+  padding:12px 22px;
+  border:1px solid var(--gold);
+  background:var(--cream);
+  color:var(--wine);
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:transform .2s,background .2s;
+}
+
+.button:hover {
+  transform:translateY(-3px);
+  background:#fff;
+}
+
+.button.dark {
+  background:var(--wine);
+  color:var(--cream);
+}
+
+.button:focus-visible,
+input:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:3px;
+}
+
+/* OPENING ENVELOPE */
+
+.intro {
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  background:radial-gradient(
+    ellipse at 50% 30%,
+    #a9233f,
+    #420412 70%
+  );
+  transition:opacity .9s,visibility .9s;
+  padding:16px;
+}
+
+.intro.hide {
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.intro h1 {
+  font:400 clamp(44px,8vw,78px)/1.1 "DM Serif Display",serif;
+  margin:18px 0 0;
+}
+
+.envelope-stage {
+  height:305px;
+  display:grid;
+  place-items:center;
+  perspective:1000px;
+}
+
+.envelope {
+  position:relative;
+  width:min(78vw,365px);
+  height:225px;
+  filter:drop-shadow(0 24px 20px #1c000888);
+  cursor:pointer;
+}
+
+.env-back {
+  position:absolute;
+  inset:0;
+  background:#85172d;
+  border:2px solid #d9b886;
+}
+
+.env-letter {
+  position:absolute;
+  left:9%;
+  top:7%;
+  width:82%;
+  height:86%;
+  z-index:2;
+  background:#f5ead8;
+  border:4px double #b78e61;
+  color:#671126;
+  display:grid;
+  place-items:center;
+  transition:transform 1.1s .35s;
+}
+
+.env-letter span {
+  font:400 50px "DM Serif Display",serif;
+}
+
+.env-front {
+  position:absolute;
+  inset:0;
+  z-index:4;
+  background:linear-gradient(130deg,#b9324d,#7e1028);
+  clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%);
+}
+
+.env-flap {
+  position:absolute;
+  inset:0;
+  z-index:5;
+  background:linear-gradient(130deg,#c83b57,#8b1830);
+  clip-path:polygon(0 0,100% 0,50% 59%);
+  transform-origin:top;
+  backface-visibility:hidden;
+  transition:transform .8s;
+}
+
+.seal {
+  position:absolute;
+  z-index:6;
+  left:50%;
+  top:53%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  height:69px;
+  width:69px;
+  background:radial-gradient(circle at 30% 20%,#f5d9a4,#ae6d3e);
+  border:3px double #ffe2a6;
+  display:grid;
+  place-items:center;
+  color:#7e122b;
+  font:400 32px "DM Serif Display",serif;
+  transition:opacity .25s;
+}
+
+.intro.opening .env-flap {
+  transform:rotateX(180deg);
+  z-index:1;
+}
+
+.intro.opening .env-letter {
+  transform:translateY(-160px);
+}
+
+.intro.opening .seal {
+  opacity:0;
+}
+
+.intro-note {
+  font-size:11px;
+  letter-spacing:.15em;
+  margin-top:17px;
+  color:#efd4b4;
+}
+
+/* MAIN WEBSITE */
+
+.site {
+  opacity:0;
+  transition:opacity .8s;
+}
+
+.site.visible {
+  opacity:1;
+}
+
+.topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:15px clamp(18px,4vw,70px);
+  background:#380611;
+  border-bottom:1px solid #e2c18c55;
+}
+
+.topbar .brand {
+  font:400 18px "DM Serif Display",serif;
+}
+
+.topbar button {
+  background:transparent;
+  border:1px solid #d9b27b;
+  color:var(--cream);
+  padding:8px 12px;
+  font-size:12px;
+}
+
+/* HERO */
+
+.hero {
+  position:relative;
+  min-height:92vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+  isolation:isolate;
+  padding:100px 25px;
+  background:radial-gradient(
+    ellipse at center,
+    #9d2039,
+    #540817 72%,
+    #29030b
+  );
+}
+
+.hero:before,
+.casino:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.14;
+  background-image:radial-gradient(#f8dfb7 1px,transparent 1px);
+  background-size:21px 21px;
+}
+
+.hero-content {
+  position:relative;
+  z-index:3;
+  max-width:750px;
+}
+
+.hero h2 {
+  font:400 clamp(66px,12vw,145px)/.86 "DM Serif Display",serif;
+  letter-spacing:-.055em;
+  margin:25px 0 15px;
+  text-shadow:0 14px 35px #25000799;
+}
+
+.hero .script {
+  display:block;
+  transform:rotate(-7deg);
+  margin:8px 0 25px;
+}
+
+.hero-sub {
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  max-width:400px;
+  margin:0 auto 30px;
+}
+
+/* REAL FLOATING COLLAGE IMAGES */
+
+.floating {
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+  object-fit:contain;
+  max-height:225px;
+  border:0;
+  box-shadow:none;
+  opacity:.97;
+  filter:drop-shadow(0 16px 18px rgba(28,0,9,.5));
+  animation:drift var(--duration,8s) ease-in-out infinite alternate;
+}
+
+.f1 {
+  width:clamp(120px,18vw,240px);
+  left:-2%;
+  top:3%;
+  transform:rotate(-15deg);
+}
+
+.f2 {
+  width:clamp(110px,16vw,210px);
+  right:0;
+  top:9%;
+  transform:rotate(11deg);
+  --duration:10s;
+}
+
+.f3 {
+  width:clamp(110px,16vw,210px);
+  left:0;
+  bottom:6%;
+  transform:rotate(9deg);
+  --duration:7s;
+}
+
+.f4 {
+  width:clamp(125px,17vw,220px);
+  right:-1%;
+  bottom:4%;
+  transform:rotate(-12deg);
+  --duration:9s;
+}
+
+.f5 {
+  width:clamp(100px,13vw,155px);
+  left:2%;
+  top:43%;
+  --duration:11s;
+}
+
+.f6 {
+  width:clamp(110px,13vw,165px);
+  right:2%;
+  top:45%;
+  --duration:8s;
+}
+
+@keyframes drift {
+  to {
+    translate:12px -24px;
+    rotate:7deg;
+  }
+}
+
+/* INVITATION */
+
+.cream {
+  background:var(--cream);
+  color:var(--ink);
+}
+
+.section {
+  padding:95px 20px;
+  text-align:center;
+  position:relative;
+}
+
+.wrap {
+  max-width:1120px;
+  margin:auto;
+}
+
+.section-title {
+  font:400 clamp(40px,6vw,75px)/1.1 "DM Serif Display",serif;
+  margin:15px 0 20px;
+}
+
+.section .script {
+  color:#9d2039;
+}
+
+.invitation-shell {
+  position:relative;
+  width:min(100%,520px);
+  margin:45px auto 25px;
+  padding:15px;
+  background:#fffaf1;
+  box-shadow:0 20px 60px #38111b44;
+  transform:rotate(-1deg);
+}
+
+.invitation-shell:before {
+  content:"";
+  position:absolute;
+  inset:7px;
+  border:1px solid #c29d72;
+  pointer-events:none;
+}
+
+.invitation-shell img {
+  width:100%;
+  display:block;
+  height:auto;
+}
+
+.stamp {
+  display:inline-block;
+  padding:7px 18px;
+  border:1px solid #9b6d54;
+  transform:rotate(-3deg);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.detail-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin:45px auto;
+  max-width:880px;
+}
+
+.detail {
+  border:1px solid #cbb49b;
+  background:#fffbf3;
+  padding:28px 20px;
+}
+
+.detail h3 {
+  font:400 27px "DM Serif Display",serif;
+  margin:8px 0;
+}
+
+.detail p {
+  margin:10px 0;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.date-big {
+  font:400 45px "DM Serif Display",serif;
+  color:#a0203a;
+}
+
+.maps {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:23px;
+}
+
+/* DRESS CODE */
+
+.dress {
+  background:linear-gradient(145deg,#620d21,#390510);
+  color:#fff3e4;
+  padding:90px 20px;
+  text-align:center;
+}
+
+.dress-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  max-width:850px;
+  margin:35px auto;
+}
+
+.swatch {
+  min-height:160px;
+  display:flex;
+  align-items:end;
+  justify-content:center;
+  padding:15px;
+  font:400 19px "DM Serif Display",serif;
+  box-shadow:0 15px 25px #0004;
+  border:5px solid #fff7e9;
+  transform:rotate(var(--r,0deg));
+}
+
+.swatch.red {
+  background:#ad1835;
+  --r:-4deg;
+}
+
+.swatch.black {
+  background:#151013;
+  --r:3deg;
+}
+
+.swatch.cream-swatch {
+  background:#f5e9d7;
+  color:#451422;
+  --r:-2deg;
+}
+
+.swatch.cheetah {
+  color:#24130f;
+  --r:4deg;
+  background-color:#d8ad6c;
+  background-image:
+    radial-gradient(ellipse 14px 10px at 16px 19px,#4a2519 40%,transparent 43%),
+    radial-gradient(ellipse 12px 17px at 48px 52px,#3b241c 37%,transparent 40%),
+    radial-gradient(ellipse 13px 9px at 67px 18px,#57321e 40%,transparent 43%);
+  background-size:80px 75px;
+}
+
+/* RSVP */
+
+.rsvp {
+  background:#f4e7d5;
+  color:var(--ink);
+  text-align:center;
+  padding:95px 20px;
+}
+
+.rsvp-panel {
+  max-width:650px;
+  margin:25px auto;
+  background:#fffaf2;
+  border:1px solid #c7a778;
+  padding:35px 25px;
+  box-shadow:0 15px 30px #5c12201a;
+}
+
+.choices {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:25px auto;
+}
+
+.choice {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid #b99579;
+  padding:16px 18px;
+  background:white;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:700;
+}
+
+.choice:has(input:checked) {
+  background:#5d091b;
+  color:white;
+  border-color:#5d091b;
+}
+
+.choice input {
+  accent-color:#9d1c34;
+  width:18px;
+  height:18px;
+}
+
+.rsvp-status {
+  min-height:24px;
+  font-size:13px;
+  margin:14px 0;
+}
+
+/* 777 SLOT MACHINE */
+
+.casino {
+  position:relative;
+  background:radial-gradient(ellipse,#64152a,#23040e);
+  text-align:center;
+  padding:100px 20px;
+}
+
+.machine {
+  max-width:510px;
+  margin:40px auto;
+  padding:14px;
+  border-radius:25px;
+  background:linear-gradient(
+    135deg,
+    #f2d59a,
+    #a36c30,
+    #f5dba0,
+    #8c5728
+  );
+  box-shadow:0 15px 0 #62401e,0 30px 40px #0007;
+}
+
+.machine-inner {
+  border:7px solid #67223a;
+  border-radius:13px;
+  background:#480d20;
+  padding:25px 18px;
+}
+
+.reels {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:22px 0;
+}
+
+.reel {
+  height:115px;
+  display:grid;
+  place-items:center;
+  background:#fff8e9;
+  color:#a91b38;
+  font:400 clamp(65px,11vw,95px) "DM Serif Display",serif;
+  border:4px solid #c99f64;
+  border-radius:6px;
+}
+
+.reel.spinning {
+  filter:blur(2px);
+}
+
+#spin {
+  border:0;
+  background:#e9c992;
+  color:#3b0c19;
+  padding:15px 28px;
+  text-transform:uppercase;
+  font-weight:800;
+  letter-spacing:.12em;
+  font-size:12px;
+}
+
+#spin:disabled {
+  opacity:.6;
+}
+
+#result {
+  font:400 24px "DM Serif Display",serif;
+  color:#f0d1a0;
+  min-height:36px;
+}
+
+/* FOOTER */
+
+.footer {
+  text-align:center;
+  padding:85px 20px;
+  background:#5d091b;
+}
+
+.footer h2 {
+  font:400 clamp(48px,8vw,85px)/1 "DM Serif Display",serif;
+}
+
+.count {
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  flex-wrap:wrap;
+  margin:30px 0;
+}
+
+.count strong {
+  display:block;
+  font:400 30px "DM Serif Display",serif;
+}
+
+.count span {
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.confetti {
+  position:fixed;
+  z-index:120;
+  top:-20px;
+  pointer-events:none;
+  animation:fall 3.5s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform:translateY(110vh) rotate(800deg);
+    opacity:0;
+  }
+}
+
+@media(max-width:650px) {
+  .hero {
+    min-height:770px;
+  }
+
+  .floating {
+    opacity:.85;
+    max-height:120px;
+  }
+
+  .f1 { left:-8%;top:5%; }
+  .f2 { right:-9%;top:7%; }
+  .f3 { left:-8%;bottom:4%; }
+  .f4 { right:-8%;bottom:4%; }
+
+  .f5,.f6 {
+    display:none;
+  }
+
+  .hero-content {
+    padding-top:80px;
+    padding-bottom:70px;
+  }
+
+  .detail-grid {
+    grid-template-columns:1fr;
+  }
+
+  .dress-grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .swatch {
+    min-height:130px;
+  }
+
+  .section,.dress,.rsvp,.casino {
+    padding:70px 16px;
+  }
+
+  .topbar .eyebrow {
+    display:none;
+  }
+
+  .reel {
+    height:93px;
+  }
+
+  .hero h2 {
+    font-size:clamp(60px,15vw,95px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after {
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
 </style>
 </head>
+
 <body>
+
+<!-- ENVELOPE INTRO -->
+
 <div class="intro" id="intro">
-<div>
-<div class="eyebrow">A private invitation awaits</div>
-<h1>You're on the list.</h1>
-<div class="script">Lucky girl</div>
-<div class="envelope-stage">
-<div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open invitation">
-<div class="env-back"></div>
-<div class="env-letter"><span>A<span style="color:#b2223c">♥</span></span></div>
-<div class="env-flap"></div>
-<div class="env-front"></div>
-<div class="seal">A</div>
-</div>
-</div>
-<button class="button" id="openBtn">Break the seal · Open invitation</button>
-<p class="intro-note">Tap to enter Amber's lucky era</p>
-</div>
+  <div>
+    <div class="eyebrow">A private invitation awaits</div>
+    <h1>You're on the list.</h1>
+    <div class="script">Lucky girl</div>
+
+    <div class="envelope-stage">
+      <div class="envelope" id="envelope"
+           role="button" tabindex="0"
+           aria-label="Open invitation">
+        <div class="env-back"></div>
+        <div class="env-letter">
+          <span>A<span style="color:#b2223c">♥</span></span>
+        </div>
+        <div class="env-flap"></div>
+        <div class="env-front"></div>
+        <div class="seal">A</div>
+      </div>
+    </div>
+
+    <button class="button" id="openBtn">
+      Break the Seal · Open Invitation
+    </button>
+
+    <p class="intro-note">Tap to enter Amber's lucky era</p>
+  </div>
 </div>
 
 <main class="site" id="site">
+
 <header class="topbar">
-<span class="brand">AMBER / 27</span>
-<span class="eyebrow">November 01 · Houston</span>
-<button id="musicBtn" type="button" aria-pressed="false">Music: Off</button>
+  <span class="brand">AMBER / 27</span>
+  <span class="eyebrow">November 01 · Houston</span>
+  <button id="musicBtn" type="button" aria-pressed="false">
+    Music: Off
+  </button>
 </header>
 
+<!-- FLOATING PHOTO COLLAGE -->
+
 <section class="hero">
-<img class="floating f1 framed" src="assets/disco.webp" alt="">
-<img class="floating f2 framed" src="assets/lips.webp" alt="">
-<img class="floating f3 framed" src="assets/dice.webp" alt="">
-<img class="floating f4 framed" src="assets/slot.webp" alt="">
-<img class="floating f5 framed" src="assets/ace.webp" alt="">
-<img class="floating f6 framed" src="assets/lucky.webp" alt="">
-<div class="hero-content">
-<div class="eyebrow">The queen of hearts invites you</div>
-<h2>AMBER'S<br>27</h2>
-<span class="script">Lucky era</span>
-<p class="hero-sub">Vintage Vegas. A little glamour. A lot of luck.</p>
-<a href="#invitation" class="button">Unfold the invitation</a>
-</div>
+
+  <img class="floating f1" src="assets/disco.png" alt="">
+  <img class="floating f2" src="assets/lips.png" alt="">
+  <img class="floating f3" src="assets/cocktail.png" alt="">
+  <img class="floating f4" src="assets/slot.png" alt="">
+  <img class="floating f5" src="assets/ace.png" alt="">
+  <img class="floating f6" src="assets/cherries.png" alt="">
+
+  <div class="hero-content">
+    <div class="eyebrow">The Queen of Hearts invites you</div>
+
+    <h2>AMBER'S<br>27</h2>
+
+    <span class="script">Lucky era</span>
+
+    <p class="hero-sub">A little glamour. A lot of luck.</p>
+
+    <a href="#invitation" class="button">
+      Unfold the Invitation
+    </a>
+  </div>
 </section>
+
+<!-- YOUR INVITATION IMAGE -->
 
 <section class="section cream" id="invitation">
-<div class="wrap">
-<div class="eyebrow">A royal invitation</div>
-<h2 class="section-title">You're invited, darling.</h2>
-<p class="script">The night is ours.</p>
-<div class="invitation-shell">
-<img src="assets/invitation.webp" alt="Amber's Lucky 27 Queen of Hearts invitation collage">
-<div class="privacy-label">RESIDENCE AT<br>THE HEIGHTS</div>
-</div>
-<span class="stamp">Admit one · Lucky 27</span>
-<div class="detail-grid">
-<article class="detail">
-<div class="eyebrow">The date</div>
-<div class="date-big">NOV 01</div>
-<h3>Sunday · 2026</h3>
-<p>Doors open at <strong>5:30 PM</strong></p>
-</article>
-<article class="detail">
-<div class="eyebrow">The destination</div>
-<h3>Residence at the Heights</h3>
-<p>611 W Cavalcade St<br>Houston, Texas</p>
-<p>Parking inside the gate or on the street. Please confirm posted parking rules.</p>
-</article>
-</div>
-<div class="maps">
-<a class="button dark" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Residence+at+the+Heights+611+W+Cavalcade+St+Houston+TX">Open Google Maps</a>
-<a class="button dark" target="_blank" rel="noopener" href="https://maps.apple.com/?q=Residence%20at%20the%20Heights&address=611%20W%20Cavalcade%20St%2C%20Houston%2C%20TX">Open Apple Maps</a>
-</div>
-</div>
+  <div class="wrap">
+
+    <div class="eyebrow">A royal invitation</div>
+
+    <h2 class="section-title">You're invited, darling.</h2>
+
+    <p class="script">The night is ours.</p>
+
+    <!-- REPLACE THIS FILE WHENEVER YOU UPDATE YOUR INVITATION -->
+    <div class="invitation-shell">
+      <img
+        src="assets/invitation.png"
+        alt="Amber's Lucky 27 Queen of Hearts invitation"
+      >
+    </div>
+
+    <span class="stamp">Admit One · Lucky 27</span>
+
+    <div class="detail-grid">
+
+      <article class="detail">
+        <div class="eyebrow">The Date</div>
+        <div class="date-big">NOV 01</div>
+        <h3>Sunday · 2026</h3>
+        <p>Doors open at <strong>5:30 PM</strong></p>
+      </article>
+
+      <article class="detail">
+        <div class="eyebrow">The Destination</div>
+        <h3>Residence at the Heights</h3>
+        <p>611 W Cavalcade St<br>Houston, Texas</p>
+        <p>Please follow the property's posted parking rules.</p>
+      </article>
+
+    </div>
+
+    <div class="maps">
+      <a class="button dark" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=Residence+at+the+Heights+611+W+Cavalcade+St+Houston+TX">
+        Open Google Maps
+      </a>
+
+      <a class="button dark" target="_blank" rel="noopener"
+         href="https://maps.apple.com/?q=Residence%20at%20the%20Heights&address=611%20W%20Cavalcade%20St%2C%20Houston%2C%20TX">
+        Open Apple Maps
+      </a>
+    </div>
+
+  </div>
 </section>
+
+<!-- DRESS CODE -->
 
 <section class="dress">
-<div class="wrap">
-<div class="eyebrow">The dress code</div>
-<h2 class="section-title">Dress like you're<br>the main character.</h2>
-<p>Pick your lucky look. Come ready for pictures.</p>
-<div class="dress-grid">
-<div class="swatch red">RED</div>
-<div class="swatch black">BLACK</div>
-<div class="swatch cream-swatch">CREAM</div>
-<div class="swatch cheetah">CHEETAH</div>
-</div>
-<p class="eyebrow">Satin · Heels · Animal print · All the drama</p>
-</div>
+  <div class="wrap">
+
+    <div class="eyebrow">The Dress Code</div>
+
+    <h2 class="section-title">
+      Dress like you're<br>the main character.
+    </h2>
+
+    <p>Pick your lucky look. Come ready for pictures.</p>
+
+    <div class="dress-grid">
+      <div class="swatch red">RED</div>
+      <div class="swatch black">BLACK</div>
+      <div class="swatch cream-swatch">CREAM</div>
+      <div class="swatch cheetah">CHEETAH</div>
+    </div>
+
+    <p class="eyebrow">
+      Satin · Heels · Animal Print · All the Drama
+    </p>
+
+  </div>
 </section>
+
+<!-- RSVP -->
 
 <section class="rsvp" id="rsvp">
-<div class="wrap">
-<div class="eyebrow">The guest list</div>
-<h2 class="section-title">Will you be there?</h2>
-<div class="rsvp-panel">
-<p>Check your answer, then send your RSVP so Amber can count you in.</p>
-<div class="choices" role="radiogroup" aria-label="RSVP response">
-<label class="choice"><input type="radio" name="attending" value="yes"> Count me in</label>
-<label class="choice"><input type="radio" name="attending" value="no"> Can't make it</label>
-</div>
-<button id="rsvpSend" class="button dark">Continue to RSVP</button>
-<p id="rsvpStatus" class="rsvp-status" role="status"></p>
-<small>Your selection alone does not submit a response. Complete the linked form to be counted.</small>
-</div>
-</div>
+  <div class="wrap">
+
+    <div class="eyebrow">The Guest List</div>
+
+    <h2 class="section-title">Will you be there?</h2>
+
+    <div class="rsvp-panel">
+      <p>
+        Check your answer, then send your RSVP
+        so Amber can count you in.
+      </p>
+
+      <div class="choices" role="radiogroup" aria-label="RSVP response">
+
+        <label class="choice">
+          <input type="radio" name="attending" value="yes">
+          Count me in
+        </label>
+
+        <label class="choice">
+          <input type="radio" name="attending" value="no">
+          Can't make it
+        </label>
+
+      </div>
+
+      <button id="rsvpSend" class="button dark">
+        Continue to RSVP
+      </button>
+
+      <p id="rsvpStatus" class="rsvp-status" role="status"></p>
+
+      <small>
+        Complete the linked form to confirm your response.
+      </small>
+    </div>
+
+  </div>
 </section>
+
+<!-- LUCKY 777 GAME -->
 
 <section class="casino">
-<div class="wrap">
-<div class="eyebrow">The birthday casino</div>
-<h2 class="section-title">Test your luck.</h2>
-<p>Give the reels a spin. The house has a surprise for you.</p>
-<div class="machine">
-<div class="machine-inner">
-<div class="eyebrow">AMBER'S PRIVATE CASINO · EST. 1999</div>
-<div class="reels">
-<div class="reel">7</div>
-<div class="reel">7</div>
-<div class="reel">7</div>
-</div>
-<button id="spin">Pull for good luck</button>
-</div>
-</div>
-<div id="result" aria-live="polite">Feeling lucky?</div>
-</div>
+  <div class="wrap">
+
+    <div class="eyebrow">The Birthday Casino</div>
+
+    <h2 class="section-title">Test your luck.</h2>
+
+    <p>Give the reels a spin. The house has a surprise for you.</p>
+
+    <div class="machine">
+      <div class="machine-inner">
+
+        <div class="eyebrow">
+          AMBER'S LUCKY 27 · EST. 1999
+        </div>
+
+        <div class="reels">
+          <div class="reel">7</div>
+          <div class="reel">7</div>
+          <div class="reel">7</div>
+        </div>
+
+        <button id="spin">Pull for Good Luck</button>
+
+      </div>
+    </div>
+
+    <div id="result" aria-live="polite">Feeling lucky?</div>
+
+  </div>
 </section>
 
+<!-- COUNTDOWN -->
+
 <footer class="footer">
-<div class="eyebrow">The countdown begins</div>
-<h2>27 looks good<br>on me.</h2>
-<div class="script">See you there.</div>
-<div class="count">
-<div><strong id="days">--</strong><span>Days</span></div>
-<div><strong id="hours">--</strong><span>Hours</span></div>
-<div><strong id="minutes">--</strong><span>Minutes</span></div>
-<div><strong id="seconds">--</strong><span>Seconds</span></div>
-</div>
-<p class="eyebrow">AMBER'S LUCKY 27 · NOVEMBER 1, 2026</p>
+  <div class="eyebrow">The Countdown Begins</div>
+
+  <h2>27 looks good<br>on me.</h2>
+
+  <div class="script">See you there.</div>
+
+  <div class="count">
+    <div><strong id="days">--</strong><span>Days</span></div>
+    <div><strong id="hours">--</strong><span>Hours</span></div>
+    <div><strong id="minutes">--</strong><span>Minutes</span></div>
+    <div><strong id="seconds">--</strong><span>Seconds</span></div>
+  </div>
+
+  <p class="eyebrow">
+    AMBER'S LUCKY 27 · NOVEMBER 1, 2026
+  </p>
 </footer>
+
 </main>
 
-<audio id="partyMusic" src="assets/party-song.mp3" preload="none" loop></audio>
+<!-- YOUR ALREADY UPLOADED MUSIC FILE -->
+
+<audio id="partyMusic" preload="auto" loop>
+  <source src="assets/party-song.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-'use strict';
+"use strict";
 
-// Paste your published Google Form URL here.
-const RSVP_FORM_URL = '';
+/*
+  PASTE YOUR GOOGLE FORM URL BELOW.
+  Until you do, the RSVP choices cannot be submitted.
+*/
+const RSVP_FORM_URL = "";
 
-const audio = document.getElementById('partyMusic');
-const musicBtn = document.getElementById('musicBtn');
-const intro = document.getElementById('intro');
-const site = document.getElementById('site');
+const audio = document.getElementById("partyMusic");
+const musicBtn = document.getElementById("musicBtn");
+const intro = document.getElementById("intro");
+const site = document.getElementById("site");
 
 function musicUI() {
-  musicBtn.textContent = audio.paused ? 'Music: Off' : 'Music: On';
-  musicBtn.setAttribute('aria-pressed', String(!audio.paused));
+  const playing = !audio.paused;
+
+  musicBtn.textContent = playing ? "Music: On" : "Music: Off";
+  musicBtn.setAttribute("aria-pressed", String(playing));
 }
 
 function startMusic() {
-  audio.volume = .45;
-  audio.play().then(musicUI).catch(() => {
-    musicUI();
-  });
+  audio.volume = 0.45;
+
+  audio.play()
+    .then(musicUI)
+    .catch(() => {
+      musicUI();
+      console.log("Music could not play. Check the MP3 file path.");
+    });
 }
 
 function openInvitation() {
-  if (intro.classList.contains('opening')) return;
+  if (intro.classList.contains("opening")) return;
+
+  // Starts the song when guests click the seal or button.
   startMusic();
-  intro.classList.add('opening');
+
+  intro.classList.add("opening");
+
   setTimeout(() => {
-    intro.classList.add('hide');
-    site.classList.add('visible');
+    intro.classList.add("hide");
+    site.classList.add("visible");
     window.scrollTo(0,0);
     confetti(90);
   },1450);
 }
 
-document.getElementById('openBtn').addEventListener('click',openInvitation);
+document.getElementById("openBtn")
+  .addEventListener("click",openInvitation);
 
-const env = document.getElementById('envelope');
+const envelope = document.getElementById("envelope");
 
-env.addEventListener('click',openInvitation);
-env.addEventListener('keydown',e => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
+envelope.addEventListener("click",openInvitation);
+
+envelope.addEventListener("keydown",event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
     openInvitation();
   }
 });
 
-musicBtn.addEventListener('click',() => {
+musicBtn.addEventListener("click",() => {
   if (audio.paused) {
     startMusic();
   } else {
@@ -312,92 +1094,142 @@ musicBtn.addEventListener('click',() => {
   }
 });
 
-function confetti(n) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const colors = ['#e9c58d','#a71f39','#fff5dd','#d24a5a'];
+audio.addEventListener("play",musicUI);
+audio.addEventListener("pause",musicUI);
 
-  for (let i=0;i<n;i++) {
-    const s = document.createElement('span');
-    s.className = 'confetti';
-    s.style.left = Math.random()*100+'vw';
-    s.style.width = 4+Math.random()*9+'px';
-    s.style.height = 6+Math.random()*10+'px';
-    s.style.background = colors[Math.floor(Math.random()*colors.length)];
-    s.style.animationDuration = 2+Math.random()*3+'s';
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(),5500);
+/* CONFETTI */
+
+function confetti(amount) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const colors = [
+    "#e9c58d",
+    "#a71f39",
+    "#fff5dd",
+    "#d24a5a"
+  ];
+
+  for (let i=0;i<amount;i++) {
+    const piece = document.createElement("span");
+
+    piece.className = "confetti";
+    piece.style.left = Math.random()*100+"vw";
+    piece.style.width = 4+Math.random()*9+"px";
+    piece.style.height = 6+Math.random()*10+"px";
+    piece.style.background =
+      colors[Math.floor(Math.random()*colors.length)];
+    piece.style.animationDuration =
+      2+Math.random()*3+"s";
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(),5500);
   }
 }
 
-document.getElementById('rsvpSend').addEventListener('click',() => {
-  const checked = document.querySelector('input[name="attending"]:checked');
-  const status = document.getElementById('rsvpStatus');
+/* RSVP */
 
-  if (!checked) {
-    status.textContent = 'Choose an answer first.';
-    return;
-  }
+document.getElementById("rsvpSend")
+  .addEventListener("click",() => {
 
-  if (!RSVP_FORM_URL) {
-    status.textContent = 'The RSVP form is being set up. Your answer has not been sent yet.';
-    return;
-  }
+    const selected = document.querySelector(
+      'input[name="attending"]:checked'
+    );
 
-  status.textContent = 'Complete the form in the new tab to send your RSVP.';
-  window.open(RSVP_FORM_URL,'_blank','noopener,noreferrer');
-});
+    const status = document.getElementById("rsvpStatus");
 
-document.getElementById('spin').addEventListener('click',() => {
-  const btn = document.getElementById('spin');
-  if (btn.disabled) return;
+    if (!selected) {
+      status.textContent = "Choose an answer first.";
+      return;
+    }
 
-  btn.disabled = true;
-  document.getElementById('result').textContent = 'The reels are turning...';
+    if (!RSVP_FORM_URL) {
+      status.textContent =
+        "The RSVP form is being set up. Your answer has not been sent yet.";
+      return;
+    }
 
-  const reels = [...document.querySelectorAll('.reel')];
-  reels.forEach(r => r.classList.add('spinning'));
+    status.textContent =
+      "Complete the form in the new tab to send your RSVP.";
 
-  let n = 0;
+    window.open(
+      RSVP_FORM_URL,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  });
 
-  const timer = setInterval(() => {
-    reels.forEach(r => {
-      r.textContent = 1+Math.floor(Math.random()*9);
-    });
+/* SLOT MACHINE */
 
-    if (++n > 22) {
-      clearInterval(timer);
+document.getElementById("spin")
+  .addEventListener("click",() => {
 
-      reels.forEach(r => {
-        r.classList.remove('spinning');
-        r.textContent = '7';
+    const button = document.getElementById("spin");
+
+    if (button.disabled) return;
+
+    button.disabled = true;
+
+    document.getElementById("result").textContent =
+      "The reels are turning...";
+
+    const reels = [...document.querySelectorAll(".reel")];
+
+    reels.forEach(reel => reel.classList.add("spinning"));
+
+    let spins = 0;
+
+    const timer = setInterval(() => {
+
+      reels.forEach(reel => {
+        reel.textContent = 1+Math.floor(Math.random()*9);
       });
 
-      document.getElementById('result').textContent = 'JACKPOT — YOU MADE THE GUEST LIST!';
-      confetti(130);
-      btn.disabled = false;
-    }
-  },90);
-});
+      spins++;
 
-const partyDate = new Date('2026-11-01T17:30:00-06:00');
+      if (spins > 22) {
+        clearInterval(timer);
+
+        reels.forEach(reel => {
+          reel.classList.remove("spinning");
+          reel.textContent = "7";
+        });
+
+        document.getElementById("result").textContent =
+          "JACKPOT — YOU MADE THE GUEST LIST!";
+
+        confetti(130);
+        button.disabled = false;
+      }
+
+    },90);
+  });
+
+/* COUNTDOWN */
+
+const partyDate = new Date("2026-11-01T17:30:00-06:00");
 
 function countdown() {
-  let ms = Math.max(0,partyDate-Date.now());
+  const remaining = Math.max(0,partyDate-Date.now());
 
-  const vals = {
-    days:Math.floor(ms/86400000),
-    hours:Math.floor(ms/3600000)%24,
-    minutes:Math.floor(ms/60000)%60,
-    seconds:Math.floor(ms/1000)%60
+  const values = {
+    days:Math.floor(remaining/86400000),
+    hours:Math.floor(remaining/3600000)%24,
+    minutes:Math.floor(remaining/60000)%60,
+    seconds:Math.floor(remaining/1000)%60
   };
 
-  for (const [key,value] of Object.entries(vals)) {
-    document.getElementById(key).textContent = String(value).padStart(2,'0');
+  for (const [key,value] of Object.entries(values)) {
+    document.getElementById(key).textContent =
+      String(value).padStart(2,"0");
   }
 }
 
 countdown();
 setInterval(countdown,1000);
 </script>
+
 </body>
 </html>
